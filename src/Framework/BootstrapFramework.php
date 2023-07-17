@@ -14,12 +14,12 @@ class BootstrapFramework implements Framework
     ];
 
     protected $spacings = [
-        '0'  => '0',
-        '1'  => '1',
-        '2'  => '2',
-        '3'  => '4',
-        '4'  => '6',
         '5'  => '12',
+        '4'  => '6',
+        '3'  => '4',
+        '2'  => '2',
+        '1'  => '1',
+        '0'  => '0',
     ];
 
     protected $grid = [
@@ -318,7 +318,9 @@ class BootstrapFramework implements Framework
 
     protected function flexElements(): array
     {
-        $items = [];
+        $items = [
+            'flex-fill' => 'flex-auto'
+        ];
 
         foreach (array_merge($this->mediaOptions, [''=>'']) as $btMedia => $twMedia) {
             foreach (['row', 'row-reverse', 'column', 'column-reverse'] as $key) {
@@ -386,7 +388,10 @@ class BootstrapFramework implements Framework
     protected function spacing(): array
     {
         $items = [];
-        $spacingProperties = ['p', 'm'];
+        $spacingProperties = ['p', 'm', 'gap',
+            'px', 'py', 'pt', 'pr', 'pb', 'pl',
+            'mx', 'my', 'mt', 'mr', 'mb', 'ml',
+        ];
 
         foreach ($spacingProperties as $property) {
             foreach ($this->spacings as $btSpacing => $twSpacing) {
